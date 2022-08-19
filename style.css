@@ -1,0 +1,15 @@
+button {
+  margin: 8px;
+  padding: 8px;
+  border: 1px solid grey;
+  border-radius: 8px;
+}
+  
+button.current {
+  box-shadow: 0 0 0 2px white,
+              0 0 0 4px black;
+}
+
+body {
+  width: 200px;
+}
