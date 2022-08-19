@@ -8,6 +8,7 @@
         "service_worker": "background.js"
         },
     "action": {
+        "default_title": "Click to view",
         "default_popup": "popup.html"
     }
 }

@@ -1,6 +1,17 @@
+ // read query params from URL
+ const params = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, prop) => searchParams.get(prop),
+});  
+
+// determine if params exist
+let lblText = "Please choose labels to filter and come back here to save them"
+if (params == null) {
+  lblText = params.label
+}
+
 // set label text
 let label = document.getElementById("selectedLabels");
-label.innerText = "This is a label"
+label.innerText = lblText
 
 // add event listener to button
 let btn = document.getElementById("initButton");
@@ -29,17 +40,17 @@ function onClick() {
   });
 
   // set query params without reload
-  if ('URLSearchParams' in window) {
-      var searchParams = new URLSearchParams(window.location.search)
-      searchParams.set("label", "API");
-      var newRelativePathQuery = window.location.pathname + '?' + searchParams.toString();
-      history.pushState(null, '', newRelativePathQuery);
-  }
+  // if ('URLSearchParams' in window) {
+  //     var searchParams = new URLSearchParams(window.location.search)
+  //     searchParams.set("label", "API");
+  //     var newRelativePathQuery = window.location.pathname + '?' + searchParams.toString();
+  //     history.pushState(null, '', newRelativePathQuery);
+  // }
 
   // set query params with reload
-  // if ('URLSearchParams' in window) {
-  //   var searchParams = new URLSearchParams(window.location.search);
-  //   searchParams.set("label", "API");
-  //   window.location.search = searchParams.toString();
-  // }
+  if ('URLSearchParams' in window) {
+    var searchParams = new URLSearchParams(window.location.search);
+    searchParams.set("label", "API");
+    window.location.search = searchParams.toString();
+  }
 }
